@@ -1,0 +1,78 @@
+	<?php
+	// to get unlimited php script execution time
+ini_set('max_execution_time', 0);
+
+	include_once 'stock-list.php'; //get $stock array;
+	//include_once '../../includes/stock-list-back.php'; //get $stock array;
+	include_once 'console_log.php';
+	include_once 'simple_html_dom.php';
+	include_once 'check-connection.php';
+	require 'funct_update_stock.php';	// this is where the function
+
+	//check internet connection
+	$url = 'www.google.com';
+	$isConnected = checkConnectionState($url);
+
+    if($isConnected){
+		//check db connection
+		$link = new mysqli("localhost","root","","capstone");
+
+		if($link->connect_error){
+			die("Connection with db failed: " . $link->connect_error);
+            echo 'Connection with db is offline..';
+             sleep(30);
+		}else{
+			$count = 0;
+			$total = sizeof($stock);
+			console_log($total);
+			console_log('starting = '.$count);
+
+			foreach($stock as $stockSymbol){
+
+		//return array(stock name, stock week low, stock week high)
+				$array1 = getStockData1($stockSymbol);
+		//return the rest data
+				$array2 = getStockData2($stockSymbol);
+
+		//check first date before update
+		//	if res = null then not exist
+		//	res = 1 then exist and skip
+				$res = checkDateStock($stockSymbol,$array2);
+				if(isset($res)){
+					$isExist = 'true';
+					$count++;
+				}else
+				$isExist = 'false';
+
+				console_log('Duplicate = '.$isExist);
+
+				if($res == null){
+			//update
+					$data = updateStock($array1,$array2,$stockSymbol);
+					if($data){
+						$count++;
+					}
+				}else{
+					$data = 3;
+				}
+				console_log('isUpdate? = '.$data);
+		/*
+			DATA STATE
+			0 or NULL === failed/skip
+			1		  === success
+			3		  === skip
+
+		*/
+			console_log_multiple_custom('current = '.$stockSymbol,$count,'state',$data);
+
+			$percent = intval($count/$total * 100)."%";
+
+	}//end of foreach
+		console_log('end = '.$count.' resetting to 0');
+		//reset
+		$count = 0;
+	}
+}else
+        echo ' No Internet Connection!';
+        sleep(30);
+?>

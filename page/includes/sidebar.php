@@ -1,0 +1,39 @@
+  <div class="col-md-4">
+
+    <!-- Search Widget -->
+    <div class="card mb-4">
+      <h5 class="card-header">Search</h5>
+      <div class="card-body">
+       <form name="search" action="../page/search.php" method="post">
+        <div class="input-group">
+
+          <input type="text" name="searchtitle" class="form-control" placeholder="Search for..." required>
+          <span class="input-group-btn">
+            <button class="btn btn-secondary" type="submit">Go!</button>
+          </span>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Side Widget -->
+  <div class="card my-4">
+    <h5 class="card-header">Recent News</h5>
+    <div class="card-body">
+      <ul class="mb-0">
+        <?php
+        $con = mysqli_connect("localhost","root","","capstone");
+        $query=mysqli_query($con,"SELECT * FROM POST limit 8 ");
+        while ($row=mysqli_fetch_array($query)) {
+
+          ?>
+
+          <li>
+            <a href="news-details.php?nid=<?php echo htmlentities($row['post_id'])?>"><?php echo htmlentities($row['post_title']);?></a>
+          </li>
+        <?php } ?>
+      </ul>
+    </div>
+  </div>
+
+</div>

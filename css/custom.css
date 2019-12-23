@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
+
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.navbar-nav>li {
+  border-right: 1px solid white;
+}
+
+.navbar-nav>li:last-child {
+  border: none;
+}
+
+.jumbotron {
+  margin-bottom: 0;
+}
+
+.shadow-textarea textarea.form-control::placeholder {
+  font-weight: 300;
+}
+
+.shadow-textarea textarea.form-control {
+  padding-left: 0.8rem;
+}
+
+label {
+  font-weight: bold;
+}
+
+.color-green {
+  color: green;
+}
+
+.custom {
+  font-size: 15px;
+}
+
+.custom-large {
+  font-size: 2em;
+}
+
+.custom-medium {
+  font-size: 1.5em;
+}
+
+.custom-small {
+  font-size: 1.17em;
+}
+
+.custom-large.color-gold, .custom-medium.color-gold, .custom-small.color-gold {
+  color: #C9B037;
+}
+
+.custom-large.color-silver,.custom-medium.color-silver,.custom-small.color-silver {
+  color: #B4B4B4;
+}
+
+.custom-large.color-bronze,.custom-medium.color-bronze,.custom-small.color-bronze {
+  color:#AD8A56;
+}
+
+.custom.color-white {
+  color: white;
+}
+
+.custom.color-green {
+  color: green;
+}
+
+.custom.color-red {
+  color: red;
+}
+
+.custom.color-black {
+  color: black;
+}
+
+.btn-rounded {
+  border-radius: 50px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.min-100 {
+  min-height: 100%;
+}
+
+.container-fluid.custom {
+  background-color: #D3D3D3;
+}
+
+.text-center.bg-grey,
+.text-left.bg-grey,
+.text-right.bg-grey {
+  background-color: #D3D3D3;
+}
+
+.text-center.bg-red {
+  background-color: #a30000;
+}
+
+.text-center.bg-green {
+  background-color: #008000;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav>.nav.nav-tabs {
+  border: none;
+  color: #fff;
+  background: #272e38;
+  border-radius: 0;
+
+}
+
+nav>div a.nav-item.nav-link,
+nav>div a.nav-item.nav-link.active {
+  border: none;
+  padding: 18px 25px;
+  color: #fff;
+  background: #272e38;
+  border-radius: 0;
+
+}
+
+/*
+nav > div a.nav-item.nav-link.active:after
+ {
+  content: "";
+  position: relative;
+  bottom: -60px;
+  left: -10%;
+  border: 15px solid transparent;
+  border-top-color: #e74c3c ;
+}*/
+
+.tab-content {
+  background: #fdfdfd;
+  line-height: 25px;
+  border: 1px solid #ddd;
+  border-top: 5px solid #e74c3c;
+  border-bottom: 5px solid #e74c3c;
+  padding: 30px 25px;
+}
+
+nav>div a.nav-item.nav-link:hover,
+nav>div a.nav-item.nav-link:focus {
+  border: none;
+  background: #e74c3c;
+  color: #fff;
+  border-radius: 0;
+  transition: background 0.20s linear;
+}
